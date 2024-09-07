@@ -44,17 +44,16 @@ ingress:
   enabled: true
   className: "nginx"
   annotations:
-    ginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
     ingress.kubernetes.io/ssl-redirect: "false"
     cert-manager.io/cluster-issuer: letsencrypt-prod
     acme.cert-manager.io/http01-edit-in-place: "true"
-
   hosts:
     - host: argo-demo.4argo.com
       paths:
         - path: /
           pathType: ImplementationSpecific
-  tls: []
+  tls:
    - secretName: argo-demo-tls
      hosts:
        - argo-demo.4argo.com
